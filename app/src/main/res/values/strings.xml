@@ -3,4 +3,9 @@
 
     <string name="login_email">Email</string>
     <string name="login_pass">Password</string>
+    <string name="login_login">Login</string>
+    <string name="login_account">Do not have an account?</string>
+    <string name="login_singup">Sing up</string>
+    <string name="login_or">Or</string>
+    <string name="login_singin">Sing in using</string>
 </resources>
