@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">BSAuto</string>
+
+    <string name="login_email">Email</string>
+    <string name="login_pass">Password</string>
+    <string name="login_login">Login</string>
+    <string name="login_account">Do not have an account?</string>
+    <string name="login_singup">Sing up</string>
+    <string name="login_or">Or</string>
+    <string name="login_singin">Sing in using</string>
+
+    <string name="singup_user">User name</string>
+    <string name="singup_repeat_pass">Repeat password</string>
+    <string name="singup_singup">Sing up</string>
+    <string name="singup_account">Already have account?</string>
+    <string name="singup_singin">Sing in</string>
 </resources>
