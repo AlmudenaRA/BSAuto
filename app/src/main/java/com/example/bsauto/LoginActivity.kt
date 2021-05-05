@@ -3,6 +3,8 @@ package com.example.bsauto
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -18,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_login.txt_pass
 
 class LoginActivity : AppCompatActivity() {
     private val GOOGLE_SING_IN = 100
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -44,6 +47,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setup(){
+        //Acción al hacer click sobre el botón login
         btn_login.setOnClickListener(){
             //Comprueba si el email y password no están vacíos o nulos
             if (txt_email.text.isNullOrEmpty() && txt_pass.text.isNullOrEmpty()){
@@ -61,18 +65,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         login_singup.setOnClickListener(){
-            //Comprueba si el email y password no están vacíos o nulos
-            if (txt_email.text.isNullOrEmpty() && txt_pass.text.isNullOrEmpty()){
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(txt_email.text.toString(),
-                    txt_pass.text.toString()).addOnCompleteListener{ //Notifica que la acción se ha completado
-
-                    if (it.isSuccessful){
-                        showSignUp(it.result?.user?.email ?:"", ProviderType.BASIC)
-                    }else{
-                        showAlert()
-                    }
-                }
-            }
+            val intent = Intent(this, SingUpActivity::class.java)
+            startActivity(intent)
         }
 
         btn_google.setOnClickListener{
