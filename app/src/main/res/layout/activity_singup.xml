@@ -45,7 +45,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txt_layout_email"
+            android:id="@+id/txt_layout_email_singup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:errorEnabled="true"
@@ -65,7 +65,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txt_layout_pass"
+            android:id="@+id/txt_layout_pass_singup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
@@ -82,7 +82,7 @@
                 android:inputType="textPassword"
                 android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
-
+<!--
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txt_layout_confirmpass"
             android:layout_width="match_parent"
@@ -101,7 +101,7 @@
                 android:inputType="textPassword"
                 android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
-
+-->
         <Button
             android:id="@+id/btn_singup"
             android:layout_width="match_parent"

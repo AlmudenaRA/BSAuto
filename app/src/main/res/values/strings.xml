@@ -34,5 +34,10 @@
     <string name="start_fuel">Diesel</string>
     <string name="start_change">Manual</string>
 
+    <string name="error_empty">The text is empty</string>
+    <string name="error_email">The email is already exists</string>
+
+
+
 
 </resources>
