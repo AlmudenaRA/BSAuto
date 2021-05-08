@@ -45,7 +45,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txt_layout_email"
+            android:id="@+id/txt_layout_email_singup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:errorEnabled="true"
@@ -65,7 +65,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/txt_layout_pass"
+            android:id="@+id/txt_layout_pass_singup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"
@@ -82,7 +82,7 @@
                 android:inputType="textPassword"
                 android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
-
+<!--
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txt_layout_confirmpass"
             android:layout_width="match_parent"
@@ -101,7 +101,7 @@
                 android:inputType="textPassword"
                 android:textColor="@color/white"/>
         </com.google.android.material.textfield.TextInputLayout>
-
+-->
         <Button
             android:id="@+id/btn_singup"
             android:layout_width="match_parent"
@@ -132,10 +132,10 @@
                 android:layout_marginLeft="48dp"/>
 
             <TextView
-                android:id="@+id/singin"
+                android:id="@+id/txt_singin_singup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/login_singup"
+                android:text="@string/singup_singin"
                 android:textAlignment="viewStart"
                 android:layout_marginLeft="16dp"
                 android:textColor="@color/secondary"/>
