@@ -15,6 +15,7 @@
     <string name="singup_singup">Sing up</string>
     <string name="singup_account">Already have account?</string>
     <string name="singup_singin">Sing in</string>
+    <string name="singup_camera_title_option">Select option</string>
 
     <string name="nav_header_user">Nombre de usuario</string>
     <string name="nav_header_email">usuario@gmail.com</string>
@@ -36,8 +37,7 @@
 
     <string name="error_empty">The text is empty</string>
     <string name="error_email">The email is already exists</string>
-
-
-
+    <string name="error_gallery">Error: error with Gallery</string>
+    <string name="error_camera">Error: error with Camera</string>
 
 </resources>
