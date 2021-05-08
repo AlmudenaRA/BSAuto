@@ -39,6 +39,7 @@ class LoginActivity : AppCompatActivity() {
         val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE)
         val email = prefs.getString("email", null)
         val provider = prefs.getString("provider", null)
+        val pass = prefs.getString("pass", null)
 
         if(email != null && provider != null){
             linearLayoutLogin.visibility = View.INVISIBLE
