@@ -101,7 +101,7 @@ class SingUpActivity : AppCompatActivity() {
                                 Toast.makeText(baseContext, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show()
 
-                                txt_layout_email_singup.error = resources.getString(R.string.error_email)
+                                txt_layout_pass_singup.error = resources.getString(R.string.error_singup)
                             }
                         }
             }else{
