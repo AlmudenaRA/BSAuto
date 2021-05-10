@@ -42,4 +42,6 @@
     <string name="error_login">The email or password isn\'t correct"</string>
     <string name="error_singup">"Format the email or password isn\'t correct"</string>
 
+    <string name="my_profile_update">Update</string>
+    <string name="my_profile_delete">Delete</string>
 </resources>
