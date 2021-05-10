@@ -6,13 +6,16 @@ import android.os.Bundle
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
-enum class ProviderType{
-    BASIC,
-    GOOGLE
-}
+
 
 
 class MainActivity : AppCompatActivity() {
+
+    enum class ProviderType{
+        BASIC,
+        GOOGLE
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         val email = bundle?.getString("email")
         val provider = bundle?.getString("provider")
 
-        setup(email ?: "", provider ?: "")
+
 
         //Guardar datos del login del usuario autenticado
         val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
@@ -31,15 +34,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     //Mostrar el email y contraseña
-    private fun setup(email: String, provider: String){
-        //txt_email_main.text = email
-        //txt_pass_main.text = provider
-
+    private fun exitSession(){
         //botón para cerrar sesión
         //logOutButton.setOnClickListener{
             //Limpiar datos usuario cuando se cierra sesión
         //val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
-        //prefs.clear()
+        //prefs.clear() //Borrar datos asociados al email y provider
         //prefs.apply()
           //  FirebaseAuth.getInstance().signOut()
             //onBackPressed()//vuelve a la pantalla anterior

@@ -39,5 +39,7 @@
     <string name="error_email">The email is already exists</string>
     <string name="error_gallery">Error: error with Gallery</string>
     <string name="error_camera">Error: error with Camera</string>
+    <string name="error_login">The email or password isn\'t correct"</string>
+    <string name="error_singup">"Format the email or password isn\'t correct"</string>
 
 </resources>
