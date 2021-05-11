@@ -32,10 +32,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val bundle = intent.extras
-        val email = bundle?.getString("email")
-        val pass = bundle?.getString("pass")
-
         setup()
         session()
 
@@ -83,7 +79,7 @@ class LoginActivity : AppCompatActivity() {
         //Acción al hacer click sobre el botón login
         btn_login.setOnClickListener(){
             //Limpiar errores
-            clearErrors(txt_layout_email, txt_layout_pass, txt_layout_user)
+            clearErrors(txt_layout_email, txt_layout_pass)
 
             //Comprueba si el email y password no están vacíos o nulos
             if (!txt_email.text.isNullOrEmpty() && !txt_pass.text.isNullOrEmpty()){
