@@ -13,7 +13,7 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import android.app.AlertDialog
 import com.example.bsauto.util.UtilImage
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -297,6 +297,6 @@ class SingUpActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val TAG = ":::SIGNUP"
+        internal const val TAG = ":::SIGNUP"
     }
 }
