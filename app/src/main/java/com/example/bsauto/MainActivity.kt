@@ -17,7 +17,10 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 
-
+enum class ProviderType{
+    BASIC,
+    GOOGLE
+}
 
 
 class MainActivity : AppCompatActivity() {
@@ -30,10 +33,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    enum class ProviderType{
-        BASIC,
-        GOOGLE
-    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,6 +63,8 @@ class MainActivity : AppCompatActivity() {
         prefs.putString("email", email)
         prefs.putString("provider", provider)
         prefs.apply()
+
+
     }
 
 
@@ -71,18 +73,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    //Mostrar el email y contraseña
-    private fun exitSession(){
-        //botón para cerrar sesión
-        //logOutButton.setOnClickListener{
-            //Limpiar datos usuario cuando se cierra sesión
-        //val prefs = getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
-        //prefs.clear() //Borrar datos asociados al email y provider
-        //prefs.apply()
-          //  FirebaseAuth.getInstance().signOut()
-            //onBackPressed()//vuelve a la pantalla anterior
-        //}
-    }
 
 
 }

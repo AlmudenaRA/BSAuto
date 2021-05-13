@@ -46,6 +46,6 @@
         android:id="@+id/nav_exit"
         android:name="com.example.bsauto.exit.ExitFragment"
         android:label="@string/menu_exit"
-        tools:layout="@layout/fragment_exit" />
+        tools:layout="@layout/fragment_start" />
 
 </navigation>
