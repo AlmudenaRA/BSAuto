@@ -44,4 +44,10 @@
 
     <string name="my_profile_update">Update</string>
     <string name="my_profile_delete">Delete</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="caution">Caution</string>
+    <string name="sure_update">Are you sure you want to update your account?</string>
+    <string name="ok">OK</string>
+    <string name="sure_delete">Are you sure you want to delete your account?</string>
 </resources>
