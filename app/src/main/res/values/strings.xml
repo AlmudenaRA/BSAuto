@@ -45,6 +45,24 @@
     <string name="my_profile_update">Update</string>
     <string name="my_profile_delete">Delete</string>
 
+    <string name="my_post_brand">Brand</string>
+    <string name="my_post_fuel">Fuel</string>
+    <string name="my_post_year">Year</string>
+    <string name="my_post_km">Kilometres</string>
+    <string name="my_post_power">Power (CV) </string>
+    <string name="my_post_change">Change</string>
+    <string name="my_post_price">Price</string>
+    <string name="my_post_description">Description</string>
+    <string name="my_post_data">VEHICLE DATA</string>
+    <string name="my_post_location">LOCATION</string>
+    <string name="my_post_contact">CONTACT</string>
+    <string name="my_post_name">Name</string>
+    <string name="my_post_phone">Phone</string>
+    <string name="my_post_province">Province</string>
+    <string name="my_post_city">City</string>
+    <string name="my_post_topost">TO POST</string>
+    <string name="my_post_correct">Post is successful</string>
+
     <string name="cancel">Cancel</string>
     <string name="caution">Caution</string>
     <string name="sure_update">Are you sure you want to update your account?</string>
