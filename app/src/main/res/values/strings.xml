@@ -61,6 +61,7 @@
     <string name="my_post_province">Province</string>
     <string name="my_post_city">City</string>
     <string name="my_post_topost">TO POST</string>
+    <string name="my_post_correct">Post is successful</string>
 
     <string name="cancel">Cancel</string>
     <string name="caution">Caution</string>

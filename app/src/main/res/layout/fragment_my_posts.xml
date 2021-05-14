@@ -39,7 +39,7 @@
                 android:textColor="@color/secondary"/>
 
             <EditText
-                android:id="@+id/txt_mypost_marca"
+                android:id="@+id/txt_mypost_brand"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:hint="@string/my_post_brand"
@@ -78,7 +78,8 @@
                 android:textColorHint="@color/white"
                 android:textColor="@color/white"
                 android:layout_marginHorizontal="36dp"
-                android:layout_marginVertical="8dp" />
+                android:layout_marginVertical="8dp"
+                android:inputType="number"/>
 
             <EditText
                 android:id="@+id/txt_mypost_power"
@@ -89,7 +90,8 @@
                 android:textColorHint="@color/white"
                 android:textColor="@color/white"
                 android:layout_marginHorizontal="36dp"
-                android:layout_marginVertical="8dp" />
+                android:layout_marginVertical="8dp"
+                android:inputType="number"/>
 
             <EditText
                 android:id="@+id/txt_mypost_year"
@@ -100,7 +102,8 @@
                 android:textColorHint="@color/white"
                 android:textColor="@color/white"
                 android:layout_marginHorizontal="36dp"
-                android:layout_marginVertical="8dp" />
+                android:layout_marginVertical="8dp"
+                android:inputType="date"/>
 
             <EditText
                 android:id="@+id/txt_mypost_price"
@@ -133,7 +136,7 @@
                 android:layout_marginHorizontal="36dp"
                 android:text="@string/my_post_location"
                 android:textStyle="bold|italic"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:textColor="@color/secondary"/>
 
             <EditText
@@ -165,7 +168,7 @@
                 android:layout_marginHorizontal="36dp"
                 android:text="@string/my_post_contact"
                 android:textStyle="bold|italic"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:textColor="@color/secondary"/>
 
             <EditText
@@ -177,7 +180,8 @@
                 android:textColorHint="@color/white"
                 android:textColor="@color/white"
                 android:layout_marginHorizontal="36dp"
-                android:layout_marginVertical="8dp" />
+                android:layout_marginVertical="8dp"
+                android:inputType="textPersonName"/>
 
             <EditText
                 android:id="@+id/txt_mypost_phone"
