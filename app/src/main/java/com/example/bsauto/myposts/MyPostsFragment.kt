@@ -18,8 +18,10 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
 import com.example.bsauto.LoginActivity
 import com.example.bsauto.R
+import com.example.bsauto.util.RoundImagePicasso
 import com.example.bsauto.util.UtilImage
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -28,18 +30,22 @@ import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_singup.*
 import kotlinx.android.synthetic.main.fragment_my_posts.*
 import kotlinx.android.synthetic.main.fragment_my_profile.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
+import java.net.URI
 
 
 class MyPostsFragment : Fragment() {
 
     val user = Firebase.auth.currentUser
     private lateinit var auth: FirebaseAuth
+    lateinit var storage: FirebaseStorage
     private val db = FirebaseFirestore.getInstance() //Instancia a la base de datos
 
     private lateinit var IMAGE_NAME: String
@@ -61,9 +67,10 @@ class MyPostsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         auth = Firebase.auth
+        storage = Firebase.storage
 
+        loadData()
         setup()
-
 
 
     }
@@ -74,43 +81,28 @@ class MyPostsFragment : Fragment() {
         }
 
         //Recupera los datos del anuncio y los muestra en el txt
-        db.collection("posts").document(email).get().addOnSuccessListener {
-            txt_mypost_brand.setText(it.get("brand") as String?)
-            txt_mypost_brand.setText(it.get("brand") as String?)
-            txt_mypost_fuel.setText(it.get("fuel") as String?)
-            txt_mypost_change.setText(it.get("change") as String?)
-            txt_mypost_km.setText(it.get("km") as String?)
-            txt_mypost_power.setText(it.get("cv") as String?)
-            txt_mypost_year.setText(it.get("year") as String?)
-            txt_mypost_price.setText(it.get("price") as String?)
-            txtm_mypost_description.setText(it.get("description") as String?)
-            txt_mypost_province.setText(it.get("province") as String?)
-            txt_mypost_city.setText(it.get("city") as String?)
-            txt_mypost_name.setText(it.get("name") as String?)
-            txt_mypost_phone.setText(it.get("phone") as String?)
-            //img_my_post.setImageURI(it.get("image") as String?)
+//        db.collection("posts").document(email).get().addOnSuccessListener {
+//            txt_mypost_brand.setText(it.get("brand") as String?)
+//            txt_mypost_brand.setText(it.get("brand") as String?)
+//            txt_mypost_fuel.setText(it.get("fuel") as String?)
+//            txt_mypost_change.setText(it.get("change") as String?)
+//            txt_mypost_km.setText(it.get("km") as String?)
+//            txt_mypost_power.setText(it.get("cv") as String?)
+//            txt_mypost_year.setText(it.get("year") as String?)
+//            txt_mypost_price.setText(it.get("price") as String?)
+//            txtm_mypost_description.setText(it.get("description") as String?)
+//            txt_mypost_province.setText(it.get("province") as String?)
+//            txt_mypost_city.setText(it.get("city") as String?)
+//            txt_mypost_name.setText(it.get("name") as String?)
+//            txt_mypost_phone.setText(it.get("phone") as String?)
+//
+//        }
 
 
-        }
 
         //Publicar anuncio o modificarlo en caso de que ya exista
         btn_mypost_topost.setOnClickListener(){
-
-            db.collection("posts").document(email).set(
-                    hashMapOf("brand" to txt_mypost_brand.text.toString(),
-                    "fuel" to txt_mypost_fuel.text.toString(),
-                    "change" to txt_mypost_change.text.toString(),
-                    "km" to txt_mypost_km.text.toString(),
-                    "cv" to txt_mypost_power.text.toString(),
-                    "year" to txt_mypost_year.text.toString(),
-                    "price" to txt_mypost_price.text.toString(),
-                    "description" to txtm_mypost_description.text.toString(),
-                    "province" to txt_mypost_province.text.toString(),
-                    "city" to txt_mypost_city.text.toString(),
-                    "name" to txt_mypost_name.text.toString(),
-                    "phone" to  txt_mypost_phone.text.toString(),
-                    "image" to img_my_post.toString())
-            )
+            changeData()
 
             Toast.makeText(context, getText(R.string.my_post_correct), Toast.LENGTH_SHORT).show()
 
@@ -202,7 +194,7 @@ class MyPostsFragment : Fragment() {
                 try {
                     FOTO = differentVersion(contentURI)
                     FOTO = UtilImage.scaleImage(FOTO, 800, 800)
-                    img_my_post.setImageBitmap(FOTO)//mostramos la imagen
+                    img_my_post.setImageBitmap(FOTO)//Muestra la imagen
                     UtilImage.redondearFoto(img_my_post)
                 } catch (e: IOException) {
                     e.printStackTrace()
@@ -215,8 +207,7 @@ class MyPostsFragment : Fragment() {
             try {
                 FOTO = differentVersion(IMAGE_URI!!)
                 FOTO = UtilImage.scaleImage(FOTO, 800, 800)
-                // Mostramos la imagen
-                img_my_post.setImageBitmap(FOTO)
+                img_my_post.setImageBitmap(FOTO)//Muestra la imagen
                 UtilImage.redondearFoto(img_my_post)
             } catch (e: NullPointerException) {
                 e.printStackTrace()
@@ -242,46 +233,72 @@ class MyPostsFragment : Fragment() {
         return bitmap;
     }
 
-//    private fun loadImage(string: String, user: FirebaseUser) {
-//        if (!this::FOTO.isInitialized) {
-//            return
-//        }
-//        val baos = ByteArrayOutputStream()
-//        FOTO.compress(Bitmap.CompressFormat.JPEG, 40, baos)
-//        val data = baos.toByteArray()
-//        val imageRef = storage.reference.child("images/post/${auth.uid}.jpg")
-//        var uploadTask = imageRef.putBytes(data)
-//        //descarga y referencia URl
-//        uploadTask.addOnFailureListener {
-//            Log.i("firebase", "Error al subir la foto a storage")
-//        }.addOnSuccessListener { taskSnapshot ->
-//            val dowuri = taskSnapshot.metadata!!.reference!!.downloadUrl
-//            dowuri.addOnSuccessListener { task ->
-//                val profileUpdates = userProfileChangeRequest {
-//                    photoUri = task
-//                    Log.i("firebase", "uri: $task")
-//                }
-//                //modifica con los cambios de la uri
-//                user.updateProfile(profileUpdates)
-//                        .addOnCompleteListener { task ->
-//                            if (task.isSuccessful) {
-//                                if (user.photoUrl != null) {
-////                                    Log.i("util", "Carga imagen")
-////                                    Picasso.get()
-////                                        .load(user.photoUrl)
-////                                        .transform(RoundImagePicasso())
-////                                        .into(MainActivity.img_user)
-//                                }
-//                                Log.d("TAG", "uri profile good")
-//                            }
-//                        }
-//            }
-//        }
-//
-//    }
+    private fun changeData() {
+        val baos = ByteArrayOutputStream()
+
+        val data = baos.toByteArray()
+        val imageRef = storage.reference.child("images/post/${auth.uid}.jpg")
+        var uploadTask = imageRef.putBytes(data)
+        //descarga y referencia URl
+        uploadTask.addOnFailureListener {
+            Log.i("firebase", "Error al subir la foto a storage")
+        }.addOnSuccessListener { taskSnapshot ->
+            val dowuri = taskSnapshot.metadata!!.reference!!.downloadUrl
+            dowuri.addOnSuccessListener { task ->
+
+                val uri = task.toString()
+
+                db.collection("posts").document(email).set(
+                        hashMapOf("brand" to txt_mypost_brand.text.toString(),
+                                "fuel" to txt_mypost_fuel.text.toString(),
+                                "change" to txt_mypost_change.text.toString(),
+                                "km" to txt_mypost_km.text.toString(),
+                                "cv" to txt_mypost_power.text.toString(),
+                                "year" to txt_mypost_year.text.toString(),
+                                "price" to txt_mypost_price.text.toString(),
+                                "description" to txtm_mypost_description.text.toString(),
+                                "province" to txt_mypost_province.text.toString(),
+                                "city" to txt_mypost_city.text.toString(),
+                                "name" to txt_mypost_name.text.toString(),
+                                "phone" to  txt_mypost_phone.text.toString(),
+                                "image" to uri)
+                )
+
+            }
+        }
+
+    }
+
+    private fun loadData() {
+
+                db.collection("posts").document(email).get().addOnSuccessListener {
+                    txt_mypost_brand.setText(it.get("brand") as String?)
+                    txt_mypost_brand.setText(it.get("brand") as String?)
+                    txt_mypost_fuel.setText(it.get("fuel") as String?)
+                    txt_mypost_change.setText(it.get("change") as String?)
+                    txt_mypost_km.setText(it.get("km") as String?)
+                    txt_mypost_power.setText(it.get("cv") as String?)
+                    txt_mypost_year.setText(it.get("year") as String?)
+                    txt_mypost_price.setText(it.get("price") as String?)
+                    txtm_mypost_description.setText(it.get("description") as String?)
+                    txt_mypost_province.setText(it.get("province") as String?)
+                    txt_mypost_city.setText(it.get("city") as String?)
+                    txt_mypost_name.setText(it.get("name") as String?)
+                    txt_mypost_phone.setText(it.get("phone") as String?)
+
+                    val uri = Uri.parse(it.get("image") as String?)
+                    if(uri != null){
+                        Picasso.get()
+                                .load(uri)
+                                .transform(RoundImagePicasso())
+                                .into(img_my_post)
+                    }
+                }
+    }
 
     companion object {
         private const val TAG = ":::MYPOST"
     }
 
 }
+
