@@ -78,4 +78,7 @@ dependencies {
     //Firestore
     implementation 'com.google.firebase:firebase-firestore-ktx'
 
+    // FirebaseUI Storage only
+    implementation 'com.firebaseui:firebase-ui-storage:6.4.0'
+
 }
