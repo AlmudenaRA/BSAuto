@@ -28,7 +28,11 @@
         android:id="@+id/nav_my_post"
         android:name="com.example.bsauto.myposts.MyPostsFragment"
         android:label="@string/menu_my_posts"
-        tools:layout="@layout/fragment_my_posts" />
+        tools:layout="@layout/fragment_my_posts" >
+        <action
+            android:id="@+id/action_nav_my_post_to_nav_start"
+            app:destination="@id/nav_start" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_map"

@@ -44,6 +44,7 @@
 
     <string name="my_profile_update">Update</string>
     <string name="my_profile_delete">Delete</string>
+    <string name="my_profile_upd_correct">Update user</string>
 
     <string name="my_post_brand">Brand</string>
     <string name="my_post_fuel">Fuel</string>
@@ -61,7 +62,9 @@
     <string name="my_post_province">Province</string>
     <string name="my_post_city">City</string>
     <string name="my_post_topost">TO POST</string>
+    <string name="my_post_delete_topost">DELETE POST</string>
     <string name="my_post_correct">Post is successful</string>
+    <string name="my_post_delete">Post removed</string>
 
     <string name="cancel">Cancel</string>
     <string name="caution">Caution</string>
