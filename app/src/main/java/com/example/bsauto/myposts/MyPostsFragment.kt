@@ -14,8 +14,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 import com.example.bsauto.LoginActivity
 import com.example.bsauto.R
 import com.example.bsauto.util.UtilImage
@@ -47,7 +49,7 @@ class MyPostsFragment : Fragment() {
     private var IMAGE_URI: Uri? = null
     private val CAMERA = 2
 
-    private lateinit var email: String
+    private var email: String = user.email
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -61,7 +63,8 @@ class MyPostsFragment : Fragment() {
         auth = Firebase.auth
 
         setup()
-        user?.let {email = user.email}
+
+
 
     }
 
@@ -70,7 +73,29 @@ class MyPostsFragment : Fragment() {
             initDialogPhoto()
         }
 
+        //Recupera los datos del anuncio y los muestra en el txt
+        db.collection("posts").document(email).get().addOnSuccessListener {
+            txt_mypost_brand.setText(it.get("brand") as String?)
+            txt_mypost_brand.setText(it.get("brand") as String?)
+            txt_mypost_fuel.setText(it.get("fuel") as String?)
+            txt_mypost_change.setText(it.get("change") as String?)
+            txt_mypost_km.setText(it.get("km") as String?)
+            txt_mypost_power.setText(it.get("cv") as String?)
+            txt_mypost_year.setText(it.get("year") as String?)
+            txt_mypost_price.setText(it.get("price") as String?)
+            txtm_mypost_description.setText(it.get("description") as String?)
+            txt_mypost_province.setText(it.get("province") as String?)
+            txt_mypost_city.setText(it.get("city") as String?)
+            txt_mypost_name.setText(it.get("name") as String?)
+            txt_mypost_phone.setText(it.get("phone") as String?)
+            //img_my_post.setImageURI(it.get("image") as String?)
+
+
+        }
+
+        //Publicar anuncio o modificarlo en caso de que ya exista
         btn_mypost_topost.setOnClickListener(){
+
             db.collection("posts").document(email).set(
                     hashMapOf("brand" to txt_mypost_brand.text.toString(),
                     "fuel" to txt_mypost_fuel.text.toString(),
@@ -89,6 +114,14 @@ class MyPostsFragment : Fragment() {
 
             Toast.makeText(context, getText(R.string.my_post_correct), Toast.LENGTH_SHORT).show()
 
+        }
+
+        //Eliminar anuncio
+        btn_mypost_delete.setOnClickListener(){
+            db.collection("posts").document(email).delete()
+            //Toast.makeText(context, getText(R.string.my_post_delete), Toast.LENGTH_SHORT).show()
+
+            it.findNavController().navigate(R.id.nav_start)
         }
     }
 
@@ -208,6 +241,44 @@ class MyPostsFragment : Fragment() {
         }
         return bitmap;
     }
+
+//    private fun loadImage(string: String, user: FirebaseUser) {
+//        if (!this::FOTO.isInitialized) {
+//            return
+//        }
+//        val baos = ByteArrayOutputStream()
+//        FOTO.compress(Bitmap.CompressFormat.JPEG, 40, baos)
+//        val data = baos.toByteArray()
+//        val imageRef = storage.reference.child("images/post/${auth.uid}.jpg")
+//        var uploadTask = imageRef.putBytes(data)
+//        //descarga y referencia URl
+//        uploadTask.addOnFailureListener {
+//            Log.i("firebase", "Error al subir la foto a storage")
+//        }.addOnSuccessListener { taskSnapshot ->
+//            val dowuri = taskSnapshot.metadata!!.reference!!.downloadUrl
+//            dowuri.addOnSuccessListener { task ->
+//                val profileUpdates = userProfileChangeRequest {
+//                    photoUri = task
+//                    Log.i("firebase", "uri: $task")
+//                }
+//                //modifica con los cambios de la uri
+//                user.updateProfile(profileUpdates)
+//                        .addOnCompleteListener { task ->
+//                            if (task.isSuccessful) {
+//                                if (user.photoUrl != null) {
+////                                    Log.i("util", "Carga imagen")
+////                                    Picasso.get()
+////                                        .load(user.photoUrl)
+////                                        .transform(RoundImagePicasso())
+////                                        .into(MainActivity.img_user)
+//                                }
+//                                Log.d("TAG", "uri profile good")
+//                            }
+//                        }
+//            }
+//        }
+//
+//    }
 
     companion object {
         private const val TAG = ":::MYPOST"
