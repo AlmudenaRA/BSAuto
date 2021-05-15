@@ -22,6 +22,7 @@ import com.example.bsauto.R
 import com.example.bsauto.SingUpActivity
 import com.example.bsauto.util.RoundImagePicasso
 import com.example.bsauto.util.UtilImage
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -152,7 +153,7 @@ class MyProfileFragment : Fragment() {
         user!!.updateProfile(profileUpdates)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        //MainActivity.txt_header_user.text = user!!.displayName
+                        userDataNavigation()
                         Log.d(SingUpActivity.TAG, "User profile updated.")
                     }
                 }
@@ -160,7 +161,6 @@ class MyProfileFragment : Fragment() {
         user!!.updateEmail(email)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    //MainActivity.txt_header_email.text = user!!.email
                     Log.d(TAG, "User email address updated.")
                 }
             }
@@ -174,6 +174,28 @@ class MyProfileFragment : Fragment() {
                     }
         }
 
+
+        Toast.makeText(context, getText(R.string.my_profile_upd_correct), Toast.LENGTH_SHORT).show()
+
+    }
+
+     fun userDataNavigation(){
+        val user = Firebase.auth.currentUser
+        user?.let {
+            val name = user.displayName
+            val email = user.email
+            val photo = user.photoUrl
+
+            if(photo != null){
+                Picasso.get()
+                        .load(photo)
+                        .transform(RoundImagePicasso())
+                        .into(MainActivity.img_user)
+            }
+            MainActivity.txt_header_user.text = name
+            MainActivity.txt_header_email.text = email
+
+        }
     }
 
 

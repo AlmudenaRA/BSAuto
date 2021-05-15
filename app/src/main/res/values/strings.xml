@@ -44,6 +44,7 @@
 
     <string name="my_profile_update">Update</string>
     <string name="my_profile_delete">Delete</string>
+    <string name="my_profile_upd_correct">Update user</string>
 
     <string name="my_post_brand">Brand</string>
     <string name="my_post_fuel">Fuel</string>
