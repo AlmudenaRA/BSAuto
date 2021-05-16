@@ -47,6 +47,16 @@
                 android:layout_marginLeft="170dp"
                 android:layout_marginRight="16dp"/>
 
+            <TextView
+                android:id="@+id/txt_euro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start_euro"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginRight="16dp"/>
+
         </LinearLayout>
 
         <LinearLayout
@@ -71,6 +81,16 @@
                 android:textColor="@color/black"
                 android:layout_marginLeft="16dp"
                 />
+
+            <TextView
+                android:id="@+id/txt_guion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start_guion"
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
 
             <TextView
                 android:id="@+id/txt_province"
@@ -99,12 +119,30 @@
                 android:textColor="@color/black"/>
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start_separation"
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+
+            <TextView
                 android:id="@+id/txt_fuel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/start_fuel"
                 android:textColor="@color/black"
                 android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start_separation"
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
 
             <TextView
                 android:id="@+id/txt_change"

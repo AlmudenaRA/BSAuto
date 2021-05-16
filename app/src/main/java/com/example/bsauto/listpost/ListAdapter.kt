@@ -1,6 +1,7 @@
 package com.example.bsauto.listpost
 
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
@@ -48,6 +49,9 @@ class ListAdapter(
                         .load(postList[position].image)
                         .placeholder(R.drawable.ic_add_photo_foreground)
                         .into(holder.imgPostVehicle)
+
+                    holder.imgPostVehicle.setImageBitmap(BitmapFactory.decodeResource(holder.imgPostVehicle?.resources,
+                        R.drawable.ic_add_photo_foreground))
                 } else {
                     Log.i(TAG, "Error: No exite fotografía")
 
