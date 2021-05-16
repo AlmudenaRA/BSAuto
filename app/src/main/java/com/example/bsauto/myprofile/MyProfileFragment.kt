@@ -104,7 +104,7 @@ class MyProfileFragment : Fragment() {
 //                .setMessage(getText(R.string.sure_update))
 //                .setPositiveButton(getString(R.string.ok)) { _, _ ->
 //                    Log.i("update", "usuario cambia")
-                    updateUser(user)
+                    updateUser(user!!)
 //                }
 //                .setNegativeButton(getString(R.string.cancel), null)
 //                .show()
@@ -116,7 +116,7 @@ class MyProfileFragment : Fragment() {
 //                .setTitle(getText(R.string.caution))
 //                .setMessage(getText(R.string.sure_delete))
 //                .setPositiveButton(getString(R.string.ok)) { _, _ ->
-                    user.delete()
+                    user!!.delete()
                     //Cuando el usuario se elimina vuelve al login
                     val loginIntent = Intent(context, LoginActivity::class.java)
                     startActivity(loginIntent)

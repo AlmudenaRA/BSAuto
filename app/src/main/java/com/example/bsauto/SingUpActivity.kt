@@ -94,7 +94,7 @@ class SingUpActivity : AppCompatActivity() {
                                 Toast.makeText(baseContext, "Authentication correct.",
                                         Toast.LENGTH_SHORT).show()
                                 val user = auth.currentUser
-                                updateUI(user)
+                                updateUI(user!!)
                                 showSignUp(email, pass)
                             } else {
                                 Log.w(Companion.TAG, "createUserWithEmail:failure", task.exception)
