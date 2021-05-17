@@ -44,7 +44,7 @@ import java.io.IOException
 import java.net.URI
 
 
-class MyPostsFragment : Fragment() {
+class MyPostsFragment: Fragment() {
 
     val user = Firebase.auth.currentUser
     private lateinit var auth: FirebaseAuth
@@ -74,8 +74,6 @@ class MyPostsFragment : Fragment() {
 
         loadData()
         setup()
-
-
     }
 
     private fun setup(){
@@ -95,6 +93,7 @@ class MyPostsFragment : Fragment() {
         //Eliminar anuncio
         btn_mypost_delete.setOnClickListener(){
             db.collection("posts").document(email!!).delete()
+
             //Toast.makeText(context, getText(R.string.my_post_delete), Toast.LENGTH_SHORT).show()
 
             it.findNavController().navigate(R.id.nav_start)
@@ -271,7 +270,6 @@ class MyPostsFragment : Fragment() {
 
                     db.collection("posts").document(email!!).get().addOnSuccessListener {
                         txt_mypost_brand.setText(it.get("brand") as String?)
-                        txt_mypost_brand.setText(it.get("brand") as String?)
                         txt_mypost_fuel.setText(it.get("fuel") as String?)
                         txt_mypost_change.setText(it.get("change") as String?)
                         txt_mypost_km.setText(it.get("km") as String?)
@@ -284,18 +282,11 @@ class MyPostsFragment : Fragment() {
                         txt_mypost_name.setText(it.get("name") as String?)
                         txt_mypost_phone.setText(it.get("phone") as String?)
 
-                        //val storageReference = Firebase.storage.reference
-                        val imageView = requireView().findViewById<ImageView>(R.id.img_my_post)
-
-                            if(uri != null){
-                            Picasso.get()
-                                    .load(uri)
-                                    .transform(RoundImagePicasso())
-                                    .into(imageView)
-                            }
-
-
-                        //Glide.with(this).load(storageReference).into(imageView)
+                        Picasso.get()
+                            .load(uri)
+                            .transform(RoundImagePicasso())
+                            .placeholder(R.drawable.ic_car_foreground)
+                            .into(img_my_post)
 
                     }
                 }

@@ -44,7 +44,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:layout_marginLeft="170dp"
+                android:layout_marginLeft="110dp"
                 android:layout_marginRight="16dp"/>
 
             <TextView

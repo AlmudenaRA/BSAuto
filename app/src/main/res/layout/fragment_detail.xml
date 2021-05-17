@@ -126,7 +126,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="linearLayout_detail"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout_detail"
                 android:orientation="horizontal">
 
                 <TextView
