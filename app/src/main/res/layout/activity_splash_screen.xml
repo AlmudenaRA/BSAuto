@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/splash_logo"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         app:srcCompat="@drawable/ic_logo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
