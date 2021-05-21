@@ -83,6 +83,9 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
+    /**
+     * Muestra los datos del usuario en el navigation
+     */
     private fun userData(){
 
         val navigationView: NavigationView = findViewById(R.id.nav_view)

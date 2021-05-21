@@ -1,9 +1,11 @@
 package com.example.bsauto.myposts
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -33,6 +35,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import com.squareup.picasso.Picasso
+import com.squareup.picasso.Target
 import kotlinx.android.synthetic.main.activity_singup.*
 import kotlinx.android.synthetic.main.fragment_my_posts.*
 import kotlinx.android.synthetic.main.fragment_my_profile.*
@@ -41,7 +44,7 @@ import java.io.IOException
 import java.net.URI
 
 
-class MyPostsFragment : Fragment() {
+class MyPostsFragment: Fragment() {
 
     val user = Firebase.auth.currentUser
     private lateinit var auth: FirebaseAuth
@@ -55,7 +58,7 @@ class MyPostsFragment : Fragment() {
     private var IMAGE_URI: Uri? = null
     private val CAMERA = 2
 
-    private var email: String = user.email
+    private var email: String? = user!!.email
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -71,33 +74,12 @@ class MyPostsFragment : Fragment() {
 
         loadData()
         setup()
-
-
     }
 
     private fun setup(){
         img_my_post.setOnClickListener(){
             initDialogPhoto()
         }
-
-        //Recupera los datos del anuncio y los muestra en el txt
-//        db.collection("posts").document(email).get().addOnSuccessListener {
-//            txt_mypost_brand.setText(it.get("brand") as String?)
-//            txt_mypost_brand.setText(it.get("brand") as String?)
-//            txt_mypost_fuel.setText(it.get("fuel") as String?)
-//            txt_mypost_change.setText(it.get("change") as String?)
-//            txt_mypost_km.setText(it.get("km") as String?)
-//            txt_mypost_power.setText(it.get("cv") as String?)
-//            txt_mypost_year.setText(it.get("year") as String?)
-//            txt_mypost_price.setText(it.get("price") as String?)
-//            txtm_mypost_description.setText(it.get("description") as String?)
-//            txt_mypost_province.setText(it.get("province") as String?)
-//            txt_mypost_city.setText(it.get("city") as String?)
-//            txt_mypost_name.setText(it.get("name") as String?)
-//            txt_mypost_phone.setText(it.get("phone") as String?)
-//
-//        }
-
 
 
         //Publicar anuncio o modificarlo en caso de que ya exista
@@ -110,7 +92,8 @@ class MyPostsFragment : Fragment() {
 
         //Eliminar anuncio
         btn_mypost_delete.setOnClickListener(){
-            db.collection("posts").document(email).delete()
+            db.collection("posts").document(email!!).delete()
+
             //Toast.makeText(context, getText(R.string.my_post_delete), Toast.LENGTH_SHORT).show()
 
             it.findNavController().navigate(R.id.nav_start)
@@ -248,7 +231,7 @@ class MyPostsFragment : Fragment() {
 
                 val uri = task.toString()
 
-                db.collection("posts").document(email).set(
+                db.collection("posts").document(email!!).set(
                         hashMapOf("brand" to txt_mypost_brand.text.toString(),
                                 "fuel" to txt_mypost_fuel.text.toString(),
                                 "change" to txt_mypost_change.text.toString(),
@@ -271,29 +254,44 @@ class MyPostsFragment : Fragment() {
 
     private fun loadData() {
 
-                db.collection("posts").document(email).get().addOnSuccessListener {
-                    txt_mypost_brand.setText(it.get("brand") as String?)
-                    txt_mypost_brand.setText(it.get("brand") as String?)
-                    txt_mypost_fuel.setText(it.get("fuel") as String?)
-                    txt_mypost_change.setText(it.get("change") as String?)
-                    txt_mypost_km.setText(it.get("km") as String?)
-                    txt_mypost_power.setText(it.get("cv") as String?)
-                    txt_mypost_year.setText(it.get("year") as String?)
-                    txt_mypost_price.setText(it.get("price") as String?)
-                    txtm_mypost_description.setText(it.get("description") as String?)
-                    txt_mypost_province.setText(it.get("province") as String?)
-                    txt_mypost_city.setText(it.get("city") as String?)
-                    txt_mypost_name.setText(it.get("name") as String?)
-                    txt_mypost_phone.setText(it.get("phone") as String?)
+            val baos = ByteArrayOutputStream()
 
-                    val uri = Uri.parse(it.get("image") as String?)
-                    if(uri != null){
+            val data = baos.toByteArray()
+            val imageRef = storage.reference.child("images/post/${auth.uid}.jpg")
+            var uploadTask = imageRef.putBytes(data)
+            //descarga y referencia URl
+            uploadTask.addOnFailureListener {
+                Log.i("firebase", "Error al descargar la foto de storage")
+            }.addOnSuccessListener { taskSnapshot ->
+                val dowuri = taskSnapshot.metadata!!.reference!!.downloadUrl
+                dowuri.addOnSuccessListener { task ->
+
+                    val uri = task.toString()
+
+                    db.collection("posts").document(email!!).get().addOnSuccessListener {
+                        txt_mypost_brand.setText(it.get("brand") as String?)
+                        txt_mypost_fuel.setText(it.get("fuel") as String?)
+                        txt_mypost_change.setText(it.get("change") as String?)
+                        txt_mypost_km.setText(it.get("km") as String?)
+                        txt_mypost_power.setText(it.get("cv") as String?)
+                        txt_mypost_year.setText(it.get("year") as String?)
+                        txt_mypost_price.setText(it.get("price") as String?)
+                        txtm_mypost_description.setText(it.get("description") as String?)
+                        txt_mypost_province.setText(it.get("province") as String?)
+                        txt_mypost_city.setText(it.get("city") as String?)
+                        txt_mypost_name.setText(it.get("name") as String?)
+                        txt_mypost_phone.setText(it.get("phone") as String?)
+
                         Picasso.get()
-                                .load(uri)
-                                .transform(RoundImagePicasso())
-                                .into(img_my_post)
+                            .load(uri)
+                            .transform(RoundImagePicasso())
+                            .placeholder(R.drawable.ic_car_foreground)
+                            .into(img_my_post)
+
                     }
                 }
+            }
+
     }
 
     companion object {
