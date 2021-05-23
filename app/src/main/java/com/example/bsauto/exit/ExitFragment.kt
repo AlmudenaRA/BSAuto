@@ -33,7 +33,8 @@ class ExitFragment : Fragment() {
 
     private fun exitSession(){
         //Limpiar datos usuario cuando se cierra sesión
-        val prefs: SharedPreferences.Editor = requireContext().getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
+        val prefs: SharedPreferences.Editor = requireContext().
+        getSharedPreferences(getString(R.string.prefs_file), Context.MODE_PRIVATE).edit()
         prefs.clear() //Borrar datos asociados al email y provider
         prefs.apply()
         FirebaseAuth.getInstance().signOut()

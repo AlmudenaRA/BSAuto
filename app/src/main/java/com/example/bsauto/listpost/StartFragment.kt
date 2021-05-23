@@ -1,5 +1,6 @@
 package com.example.bsauto.listpost
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -9,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.FragmentTransaction
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bsauto.R
@@ -46,7 +49,7 @@ class StartFragment : Fragment() {
     private fun setup(){
         postList.clear()
         adapter = ListAdapter(postList){
-            eventoPost(it)
+            eventPost(it)
         }
         recyclerview_start.adapter = adapter
 
@@ -54,8 +57,8 @@ class StartFragment : Fragment() {
         db.collection("posts").get()
                 .addOnSuccessListener { result ->
                     for (item in result) {
-                        val lugar = item.toObject(Post::class.java)
-                        postList.add(lugar)
+                        val post = item.toObject(Post::class.java)
+                        postList.add(post)
                         cargaAdapter(postList)
                     }
                 }
@@ -74,7 +77,7 @@ class StartFragment : Fragment() {
             handler.post {
 
                 adapter = ListAdapter(posts) {
-                    eventoPost(it)
+                    eventPost(it)
                 }
 
                 recyclerview_start.adapter = adapter
@@ -89,12 +92,8 @@ class StartFragment : Fragment() {
     /**
      * Función cuando pulsas un anuncio
      */
-    private fun eventoPost(post: Post){
-
-    }
-
-    private fun onPostClicked(post: Post){
-        this.findNavController().navigate(R.id.nav_profile)
+    private fun eventPost(post: Post){
+        this.findNavController().navigate(R.id.nav_detail)
     }
 
     companion object {
