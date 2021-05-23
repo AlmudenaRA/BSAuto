@@ -32,8 +32,6 @@ class ListAdapter(
 
         holder.postBrand.text = postList[position].brand
         holder.postPrice.text = postList[position].price
-        holder.postCity.text = postList[position].city
-        holder.postProvince.text = postList[position].province
         holder.postYear.text = postList[position].year
         holder.postFuel.text = postList[position].fuel
         holder.postChange.text = postList[position].change
@@ -47,8 +45,7 @@ class ListAdapter(
                         .placeholder(R.drawable.ic_add_photo_foreground)
                         .into(holder.imgPostVehicle)
 
-                    holder.imgPostVehicle.setImageBitmap(BitmapFactory.decodeResource(holder.imgPostVehicle?.resources,
-                        R.drawable.ic_add_photo_foreground))
+
                 } else {
                     Log.i(TAG, "Error: No exite fotografía")
 
@@ -79,8 +76,6 @@ class ListAdapter(
         var imgPostVehicle = itemView.img_item_star
         var postBrand = itemView.txt_start_brand
         var postPrice = itemView.txt_price
-        var postCity = itemView.txt_city
-        var postProvince = itemView.txt_province
         var postYear = itemView.txt_year
         var postFuel = itemView.txt_fuel
         var postChange = itemView.txt_change

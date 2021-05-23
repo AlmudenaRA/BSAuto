@@ -97,7 +97,7 @@ class StartFragment : Fragment() {
     }
 
     companion object {
-        private const val TAG = ":::STARFRAGMENT"
+        private const val TAG = ":::STARTFRAGMENT"
     }
 
 
