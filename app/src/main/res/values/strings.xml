@@ -84,7 +84,7 @@
     <string name="detail_description">Description</string>
     <string name="detail_name">Nombre Cualquiera</string>
     <string name="detail_phone">654 120 150</string>
-    <string name="detail_location">GO TO LOCATION</string>
+    <string name="detail_contact">CONTACT</string>
     <string name="detail_nav">Detail</string>
 
     <string name="cancel">Cancel</string>

@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.bsauto.MainActivity
 import com.example.bsauto.R
 import com.example.bsauto.myposts.Post
 import com.google.firebase.auth.FirebaseAuth
@@ -63,7 +64,7 @@ class StartFragment : Fragment() {
                     }
                 }
                 .addOnFailureListener { exception ->
-                    Log.i("fairebase", "error al cargar posts")
+                    Log.i(TAG, "error al cargar posts")
 
                 }
 
@@ -75,7 +76,6 @@ class StartFragment : Fragment() {
         executor.execute {
 
             handler.post {
-
                 adapter = ListAdapter(posts) {
                     eventPost(it)
                 }
@@ -93,8 +93,25 @@ class StartFragment : Fragment() {
      * Función cuando pulsas un anuncio
      */
     private fun eventPost(post: Post){
-        this.findNavController().navigate(R.id.nav_detail)
+        if ((activity as MainActivity?)!!.isEventoFila) {
+            openDetailPost(post)
+        }
     }
+
+    /**
+     * Abre una sitio como Fragment
+     * @param site Site
+     */
+    private fun openDetailPost(post: Post) {
+        Log.i(TAG, "Abrir detalle anuncio")
+        val addDetail = DetailFragment(post)
+        val transaction = requireActivity()!!.supportFragmentManager.beginTransaction()
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+        transaction.add(R.id.nav_host_fragment, addDetail)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
 
     companion object {
         private const val TAG = ":::STARTFRAGMENT"
