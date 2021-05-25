@@ -209,7 +209,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout_detail"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/btn_detail_location"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout_contact"
                 android:orientation="vertical">
 
                 <TextView
@@ -234,15 +234,50 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/linearLayout_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/btn_detail_location"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txt_contact_ti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textAlignment="gravity"
+                    android:text="@string/detail_name_ti"
+                    android:textColor="@color/secondary"
+                    android:textSize="16sp"
+                    android:layout_marginHorizontal="40dp"
+                    android:layout_marginVertical="0dp" />
+
+                <TextView
+                    android:id="@+id/txt_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="gravity"
+                    android:text="@string/detail_name"
+                    android:layout_marginHorizontal="40dp"
+                    android:layout_marginVertical="0dp" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
             <Button
-                android:id="@+id/btn_detail_location"
+                android:id="@+id/btn_detail_call"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_round"
-                android:text="@string/detail_contact"
+                android:text="@string/detail_call"
                 android:textSize="20sp"
                 android:layout_marginHorizontal="32dp"
-                android:layout_marginVertical="10dp"/>
+                android:layout_marginVertical="20dp"/>
 
         </LinearLayout>
 
