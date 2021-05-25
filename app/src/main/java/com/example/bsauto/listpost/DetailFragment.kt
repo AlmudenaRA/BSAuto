@@ -1,10 +1,13 @@
 package com.example.bsauto.listpost
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.bsauto.MainActivity
 import com.example.bsauto.R
 import com.example.bsauto.myposts.Post
 import com.example.bsauto.util.RoundImagePicasso
@@ -35,6 +38,17 @@ class DetailFragment(post: Post?) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewData()
+        init()
+    }
+
+    private fun init(){
+        btn_detail_call.setOnClickListener(){
+            val intent = Intent(Intent.ACTION_DIAL).apply {
+                data = Uri.parse("tel:+34"+(post?.phone))
+            }
+
+            requireActivity().startActivity(intent)
+        }
     }
 
 
@@ -51,6 +65,7 @@ class DetailFragment(post: Post?) : Fragment() {
         txt_detail_year.setText(post?.year)
         txt_detail_price.setText(post?.price)
         txt_description.setText(post?.description)
+        txt_contact.setText(post?.name)
 
         post?.image?.let {
                 mCover ->
@@ -63,7 +78,8 @@ class DetailFragment(post: Post?) : Fragment() {
 
     }
 
-    companion object {
-
+    override fun onDestroy() {
+        super.onDestroy()
     }
+
 }

@@ -99,15 +99,15 @@ class StartFragment : Fragment() {
     }
 
     /**
-     * Abre una sitio como Fragment
-     * @param site Site
+     * Abre un anuncio como Fragment
+     * @param post Post
      */
     private fun openDetailPost(post: Post) {
         Log.i(TAG, "Abrir detalle anuncio")
         val addDetail = DetailFragment(post)
         val transaction = requireActivity()!!.supportFragmentManager.beginTransaction()
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-        transaction.add(R.id.nav_host_fragment, addDetail)
+        transaction.add(R.id.nav_host_fragment, addDetail) //agrega el fragment
         transaction.addToBackStack(null)
         transaction.commit()
     }

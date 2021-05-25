@@ -139,6 +139,7 @@ class LoginActivity : AppCompatActivity() {
             putExtra("provider", provider.name)
         }
         startActivity(mainIntent)
+        finish()
 
     }
 
