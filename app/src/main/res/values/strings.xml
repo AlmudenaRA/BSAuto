@@ -20,9 +20,9 @@
     <string name="nav_header_user">Nombre de usuario</string>
     <string name="nav_header_email">usuario@gmail.com</string>
 
-    <string name="menu_start">Start</string>
-    <string name="menu_my_posts">My posts</string>
-    <string name="menu_maps">Maps</string>
+    <string name="menu_start">Posts</string>
+    <string name="menu_my_posts">My post</string>
+    <string name="menu_maps">Store location</string>
     <string name="menu_profile">My profile</string>
     <string name="menu_exit">Exit</string>
 
@@ -83,8 +83,9 @@
     <string name="detail_desc_title">Description</string>
     <string name="detail_description">Description</string>
     <string name="detail_name">Nombre Cualquiera</string>
+    <string name="detail_name_ti">Contact name</string>
     <string name="detail_phone">654 120 150</string>
-    <string name="detail_location">GO TO LOCATION</string>
+    <string name="detail_call">CALL</string>
     <string name="detail_nav">Detail</string>
 
     <string name="cancel">Cancel</string>
