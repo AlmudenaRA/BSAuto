@@ -71,8 +71,8 @@ class StartFragment : Fragment() {
     }
 
     private fun cargaAdapter(posts: MutableList<Post>) {
-        val executor = Executors.newSingleThreadExecutor()
-        val handler = Handler(Looper.getMainLooper())
+        val executor = Executors.newSingleThreadExecutor() //Usa un solo hilo
+        val handler = Handler(Looper.getMainLooper()) //Ejecuta un bucle de mensajes para un hilo
         executor.execute {
 
             handler.post {
