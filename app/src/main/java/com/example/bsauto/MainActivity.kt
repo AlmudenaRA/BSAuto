@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     val user = Firebase.auth.currentUser
     private lateinit var auth: FirebaseAuth
+    var isEventoFila = true
 
     companion object{
         lateinit var img_user: ImageView
@@ -114,5 +115,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
+    override fun onBackPressed() {
+        isEventoFila = true
+        super.onBackPressed()
+    }
 }

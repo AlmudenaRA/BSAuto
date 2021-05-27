@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".listpost.DetailFragment">
+    tools:context=".listpost.DetailFragment"
+    android:background="@drawable/background_app">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -236,51 +237,48 @@
             <LinearLayout
                 android:id="@+id/linearLayout_contact"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout_detail"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/btn_detail_location"
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/txt_detail_contact"
-                    android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_marginHorizontal="36dp"
-                    android:text="@string/my_post_contact"
-                    android:textStyle="bold|italic"
-                    android:layout_marginTop="24dp"
-                    android:textColor="@color/secondary"/>
+                    android:id="@+id/txt_contact_ti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:textAlignment="gravity"
+                    android:text="@string/detail_name_ti"
+                    android:textColor="@color/secondary"
+                    android:textSize="16sp"
+                    android:layout_marginHorizontal="40dp"
+                    android:layout_marginVertical="0dp" />
 
                 <TextView
-                    android:id="@+id/txt_detail_nameUser"
+                    android:id="@+id/txt_contact"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="gravity"
                     android:text="@string/detail_name"
                     android:layout_marginHorizontal="40dp"
-                    android:layout_marginVertical="5dp" />
-
-                <TextView
-                    android:id="@+id/txt_detail_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="gravity"
-                    android:text="@string/detail_phone"
-                    android:layout_marginHorizontal="40dp"
-                    android:layout_marginVertical="5dp" />
+                    android:layout_marginVertical="0dp" />
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_detail_location"
+            <Space
                 android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+            <Button
+                android:id="@+id/btn_detail_call"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_round"
-                android:text="@string/detail_location"
+                android:drawableLeft="@drawable/ic_phone_foreground"
+                android:text="@string/detail_contact"
                 android:textSize="20sp"
-                android:layout_marginHorizontal="32dp"
+                android:paddingLeft="25dp"
+                android:layout_marginHorizontal="80dp"
                 android:layout_marginVertical="20dp"/>
 
         </LinearLayout>
