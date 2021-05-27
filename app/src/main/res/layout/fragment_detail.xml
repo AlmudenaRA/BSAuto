@@ -271,12 +271,14 @@
                 android:layout_height="20dp"/>
             <Button
                 android:id="@+id/btn_detail_call"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_round"
-                android:text="@string/detail_call"
+                android:drawableLeft="@drawable/ic_phone_foreground"
+                android:text="@string/detail_contact"
                 android:textSize="20sp"
-                android:layout_marginHorizontal="32dp"
+                android:paddingLeft="25dp"
+                android:layout_marginHorizontal="80dp"
                 android:layout_marginVertical="20dp"/>
 
         </LinearLayout>
