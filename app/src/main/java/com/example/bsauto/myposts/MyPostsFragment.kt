@@ -89,6 +89,9 @@ class MyPostsFragment: Fragment() {
         //Publicar anuncio o modificarlo en caso de que ya exista
         btn_mypost_topost.setOnClickListener(){
 
+            //Obtiene la imagen que se encuentra en el ImageView
+            img_my_post.buildDrawingCache()
+            FOTO = img_my_post.getDrawingCache()
 
             changeData(FOTO)
 
