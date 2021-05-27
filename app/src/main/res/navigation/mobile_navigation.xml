@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/nav_start">
+
+    <fragment
+        android:id="@+id/nav_start"
+        android:name="com.example.bsauto.listpost.StartFragment"
+        android:label="@string/menu_start"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_myProfileFragment"
+            app:destination="@id/nav_profile" />
+        <action
+            android:id="@+id/action_nav_start_to_nav_my_post"
+            app:destination="@id/nav_my_post" />
+        <action
+            android:id="@+id/action_nav_start_to_nav_map"
+            app:destination="@id/nav_map" />
+        <action
+            android:id="@+id/action_nav_start_to_nav_exit"
+            app:destination="@id/nav_exit" />
+        <action
+            android:id="@+id/action_nav_start_to_nav_detail"
+            app:destination="@id/nav_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_detail"
+        android:name="com.example.bsauto.listpost.DetailFragment"
+        android:label="@string/detail_nav"
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_nav_detail_to_nav_start"
+            app:destination="@id/nav_start" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_my_post"
+        android:name="com.example.bsauto.myposts.MyPostsFragment"
+        android:label="@string/menu_my_posts"
+        tools:layout="@layout/fragment_my_posts" >
+        <action
+            android:id="@+id/action_nav_my_post_to_nav_start"
+            app:destination="@id/nav_start" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_map"
+        android:name="com.example.bsauto.maps.MapsFragment"
+        android:label="@string/menu_maps"
+        tools:layout="@layout/fragment_maps" />
+
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.example.bsauto.myprofile.MyProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_my_profile" />
+
+    <fragment
+        android:id="@+id/nav_exit"
+        android:name="com.example.bsauto.exit.ExitFragment"
+        android:label="@string/menu_exit"
+        tools:layout="@layout/fragment_start" />
+
+</navigation>

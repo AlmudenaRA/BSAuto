@@ -1,3 +1,99 @@
 <resources>
     <string name="app_name">BSAuto</string>
+    <string name="prefs_file">com.example.bsauto.PREFERENCE_FILE_KEY</string>
+
+    <string name="login_email">Email</string>
+    <string name="login_pass">Password</string>
+    <string name="login_login">Login</string>
+    <string name="login_account">Do not have an account?</string>
+    <string name="login_singup">Sing up</string>
+    <string name="login_or">Or</string>
+    <string name="login_singin">Sing in using</string>
+
+    <string name="singup_user">User name</string>
+    <string name="singup_repeat_pass">Repeat password</string>
+    <string name="singup_singup">Sing up</string>
+    <string name="singup_account">Already have account?</string>
+    <string name="singup_singin">Sing in</string>
+    <string name="singup_camera_title_option">Select option</string>
+
+    <string name="nav_header_user">Nombre de usuario</string>
+    <string name="nav_header_email">usuario@gmail.com</string>
+
+    <string name="menu_start">Posts</string>
+    <string name="menu_my_posts">My post</string>
+    <string name="menu_maps">Store location</string>
+    <string name="menu_profile">My profile</string>
+    <string name="menu_exit">Exit</string>
+
+    <string name="start_price">10.000</string>
+    <string name="start_euro">€</string>
+    <string name="start_guion">-</string>
+    <string name="start_separation">|</string>
+    <string name="start_brand">Audi</string>
+    <string name="start_model">A4</string>
+    <string name="start_location">Ciudad Real</string>
+    <string name="start_province">(Ciudad Real)</string>
+    <string name="start_year">2021</string>
+    <string name="start_fuel">Diesel</string>
+    <string name="start_change">Manual</string>
+
+    <string name="error_empty">The text is empty</string>
+    <string name="error_email">The email is already exists</string>
+    <string name="error_gallery">Error: error with Gallery</string>
+    <string name="error_camera">Error: error with Camera</string>
+    <string name="error_login">The email or password isn\'t correct"</string>
+    <string name="error_singup">"Format the email or password isn\'t correct"</string>
+
+    <string name="my_profile_update">Update</string>
+    <string name="my_profile_delete">Delete</string>
+    <string name="my_profile_upd_correct">Update user</string>
+
+    <string name="my_post_brand">Brand</string>
+    <string name="my_post_fuel">Fuel</string>
+    <string name="my_post_year">Year</string>
+    <string name="my_post_km">Kilometres</string>
+    <string name="my_post_power">Power (CV) </string>
+    <string name="my_post_change">Change</string>
+    <string name="my_post_price">Price</string>
+    <string name="my_post_description">Description</string>
+    <string name="my_post_data">VEHICLE DATA</string>
+    <string name="my_post_location">LOCATION</string>
+    <string name="my_post_contact">CONTACT</string>
+    <string name="my_post_name">Name</string>
+    <string name="my_post_phone">Phone</string>
+    <string name="my_post_province">Province</string>
+    <string name="my_post_city">City</string>
+    <string name="my_post_topost">TO POST</string>
+    <string name="my_post_delete_topost">DELETE POST</string>
+    <string name="my_post_correct">Post is successful</string>
+    <string name="my_post_delete">Post removed</string>
+
+    <string name="detail_price">10000</string>
+    <string name="detail_brand">Ford Focus</string>
+    <string name="detail_cv">105</string>
+    <string name="detail_cv_title">CV</string>
+    <string name="detail_fuel">Diesel</string>
+    <string name="detail_km_title">Km</string>
+    <string name="detail_change_title">Change</string>
+    <string name="detail_year_title">Year</string>
+    <string name="detail_km">120.000</string>
+    <string name="detail_change">Automatic</string>
+    <string name="detail_year">2021</string>
+    <string name="detail_desc_title">Description</string>
+    <string name="detail_description">Description</string>
+    <string name="detail_name">Nombre Cualquiera</string>
+    <string name="detail_name_ti">Contact name</string>
+    <string name="detail_phone">654 120 150</string>
+    <string name="detail_contact">CONTACT</string>
+    <string name="detail_nav">Detail</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="caution">Caution</string>
+    <string name="sure_update">Are you sure you want to update your account?</string>
+    <string name="ok">OK</string>
+    <string name="sure_delete">Are you sure you want to delete your account?</string>
+
+    <string name="map_marker">BSAuto</string>
+
 </resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "425337584381",
+    "project_id": "bsauto-3574e",
+    "storage_bucket": "bsauto-3574e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425337584381:android:ebf1f3b2a2b073e65f5c94",
+        "android_client_info": {
+          "package_name": "com.example.bsauto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425337584381-0vas78mvp6j0cf3623ud3barv2c89chd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-Xhrc2D6QN9ziLtostYohVX-AWzWndxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425337584381-0vas78mvp6j0cf3623ud3barv2c89chd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

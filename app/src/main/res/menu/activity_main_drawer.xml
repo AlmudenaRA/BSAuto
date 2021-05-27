@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    android:background="@color/gradient_light">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_start"
+            android:icon="@drawable/ic_car_foreground"
+            android:title="@string/menu_start" />
+        <item
+            android:id="@+id/nav_my_post"
+            android:icon="@drawable/ic_add_car_foreground"
+            android:title="@string/menu_my_posts" />
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_explore_foreground"
+            android:title="@string/menu_maps" />
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_user_foreground"
+            android:title="@string/menu_profile" />
+
+        <item
+            android:id="@+id/nav_exit"
+            android:icon="@drawable/ic_exit_foreground"
+            android:title="@string/menu_exit" />
+    </group>
+
+</menu>
