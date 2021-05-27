@@ -85,7 +85,7 @@
     <string name="detail_name">Nombre Cualquiera</string>
     <string name="detail_name_ti">Contact name</string>
     <string name="detail_phone">654 120 150</string>
-    <string name="detail_call">CALL</string>
+    <string name="detail_contact">CONTACT</string>
     <string name="detail_nav">Detail</string>
 
     <string name="cancel">Cancel</string>
